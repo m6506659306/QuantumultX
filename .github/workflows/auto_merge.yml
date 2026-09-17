@@ -19,8 +19,8 @@ jobs:
         # 定义分类矩阵：配置源文件 -> 输出文件 -> 强制改写的策略名
         # 格式为 "源文件:输出文件:策略名"
         CATEGORIES=( \
-          "source_direct.txt:rules_direct.list:direct" \
-          "source_proxy.txt:rules_proxy.list:proxy" \
+          "Filter/source_direct.txt:Filter/rules_direct.list:direct" \
+          "Filter/source_proxy.txt:Filter/rules_proxy.list:proxy" \
         )
         
         for item in "${CATEGORIES[@]}"; do
@@ -70,8 +70,8 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         
         # 检查是否有任何 list 文件发生变动
-        if [ -n "$(git status --porcelain rules_direct.list rules_proxy.list)" ]; then
-          git add rules_direct.list rules_proxy.list
+        if [ -n "$(git status --porcelain Filter/rules_direct.list Filter/rules_proxy.list)" ]; then
+          git add Filter/rules_direct.list Filter/rules_proxy.list
           git commit -m "自动更新分类合并规则(重写后缀): $(date -u -d '+8 hours' '+%Y-%m-%d %H:%M:%S')"
           git push origin main
         else
