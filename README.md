@@ -35,9 +35,20 @@ https://raw.githubusercontent.com/m6506659306/QuantumultX/main/Filter/rules_dire
 
 `Filter/rules_plus.list` 为手动维护的补充规则,建议粘贴到 `[filter_local]`(它是手动维护的,不会随自动更新变化)。
 
-## 重写脚本
+## 重写
 
-`Rewrite/BiliBili.Enhanced.custom.snippet` 为 Quantumult X snippet(重写规则 + MITM 声明),其中各条 `script-response-body` 指向本仓的 `Rewrite/response.bundle.custom.js`。
+| 文件 | 用途 | MitM 要求 |
+|---|---|---|
+| `Rewrite/DoubanAds.conf` | 豆瓣 App 去广告:2 条域名级 `reject` + 5 条广告接口 `reject-dict` | 域名级不需要;`url` 规则需覆盖文件内 `hostname` 列的 7 个域 |
+| `Rewrite/BiliBili.Enhanced.custom.snippet` | BiliBili 增强 snippet(重写规则 + MITM 声明) | 需要(`mitm` 段已声明) |
+
+远程引用(Quantumult X:设置 → 重写 → 添加 → 从 URL 导入):
+
+```
+https://raw.githubusercontent.com/m6506659306/QuantumultX/main/Rewrite/DoubanAds.conf
+```
+
+`Rewrite/BiliBili.Enhanced.custom.snippet` 各条 `script-response-body` 指向本仓 `Rewrite/response.bundle.custom.js`。
 
 ## 维护
 
@@ -56,6 +67,7 @@ Filter/
   source_proxy.txt    # proxy 上游规则 URL 清单
   source_direct.txt   # direct 上游规则 URL 清单
 Rewrite/
+  DoubanAds.conf                    # 豆瓣 App 去广告(域名级 reject + 接口 reject-dict)
   response.bundle.custom.js         # 自建脚本:BiliBili 增强(被下面的 snippet 引用)
   BiliBili.Enhanced.custom.snippet  # Quantumult X snippet:重写 + MITM 声明
 README.md
