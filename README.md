@@ -40,7 +40,7 @@ https://raw.githubusercontent.com/m6506659306/QuantumultX/main/Filter/rules_dire
 
 | 文件 | 用途 | MitM 要求 |
 |---|---|---|
-| `Rewrite/DoubanAds.conf` | 豆瓣 App 去广告:2 条域名级 `reject` + 5 条广告接口 `reject-dict` | 域名级不需要;`url` 规则需覆盖文件内 `hostname` 列的 7 个域 |
+| `Rewrite/DoubanAds.conf` | 豆瓣 App 去广告:2 条域名级 `reject` + 6 条广告接口 `reject-dict` + 1 条素材 `reject-img` | 域名级不需要;`url` 规则需覆盖文件内 `hostname` 列的 11 个域 |
 | `Rewrite/YoutubeAds.conf` | YouTube 去广告:视频 / 瀑布流 / 搜索页 / 播放页 / 短视频 / 贴片,含视频自动 PIP、后台播放 | 需覆盖文件内 `hostname` 列的 `*.googlevideo.com`、`www.youtube.com` 等 5 项;上游注明不适用允许 UDP 转发的节点 |
 | `Rewrite/BiliBili.Enhanced.custom.snippet` | BiliBili 增强 snippet(重写规则 + MITM 声明) | 需要(`mitm` 段已声明) |
 
