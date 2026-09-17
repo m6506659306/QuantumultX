@@ -59,3 +59,9 @@ host-suffix, ad.weibo.com, reject
 # 12306广告
 HOST-SUFFIX, ad.cdn.glinkmedia.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
+# 京东广告域(x.jd.com 覆盖其全部子域;豆瓣等 App 内嵌京东联盟广告)
+host-suffix, x.jd.com, reject
+host-suffix, img-x.jd.com, reject
+host-suffix, im-x.jd.com, reject
+host-suffix, u-x.jd.com, reject
+host-suffix, dsp-x.jd.com, reject
