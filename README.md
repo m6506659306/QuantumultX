@@ -9,7 +9,8 @@ Quantumult X 分流规则聚合,输出 **proxy / direct** 两组规则文件,外
 | 目录 | 内容 |
 |---|---|
 | `Filter/` | 分流规则:上游清单、自动生成产物、手动补充规则 |
-| `Rewrite/` | 重写脚本与 snippet |
+| `Rewrite/` | 重写规则、脚本与 snippet |
+| `SOURCES.md` | 自持文件的来源、本地改动与 sha256 校验值 |
 
 ## 规则集
 
@@ -40,15 +41,19 @@ https://raw.githubusercontent.com/m6506659306/QuantumultX/main/Filter/rules_dire
 | 文件 | 用途 | MitM 要求 |
 |---|---|---|
 | `Rewrite/DoubanAds.conf` | 豆瓣 App 去广告:2 条域名级 `reject` + 5 条广告接口 `reject-dict` | 域名级不需要;`url` 规则需覆盖文件内 `hostname` 列的 7 个域 |
+| `Rewrite/YoutubeAds.conf` | YouTube 去广告:视频 / 瀑布流 / 搜索页 / 播放页 / 短视频 / 贴片,含视频自动 PIP、后台播放 | 需覆盖文件内 `hostname` 列的 `*.googlevideo.com`、`www.youtube.com` 等 5 项;上游注明不适用允许 UDP 转发的节点 |
 | `Rewrite/BiliBili.Enhanced.custom.snippet` | BiliBili 增强 snippet(重写规则 + MITM 声明) | 需要(`mitm` 段已声明) |
 
 远程引用(Quantumult X:设置 → 重写 → 添加 → 从 URL 导入):
 
 ```
 https://raw.githubusercontent.com/m6506659306/QuantumultX/main/Rewrite/DoubanAds.conf
+https://raw.githubusercontent.com/m6506659306/QuantumultX/main/Rewrite/YoutubeAds.conf
 ```
 
-`Rewrite/BiliBili.Enhanced.custom.snippet` 各条 `script-response-body` 指向本仓 `Rewrite/response.bundle.custom.js`。
+`Rewrite/YoutubeAds.conf` 第 23 行与 `Rewrite/BiliBili.Enhanced.custom.snippet` 各条 `script-response-body` 均指向本仓内的脚本副本(`Rewrite/youtube.response.js`、`Rewrite/response.bundle.custom.js`)。
+
+这些自持文件的来源、本地改动与 sha256 校验值登记在 `SOURCES.md`。
 
 ## 维护
 
@@ -68,8 +73,11 @@ Filter/
   source_direct.txt   # direct 上游规则 URL 清单
 Rewrite/
   DoubanAds.conf                    # 豆瓣 App 去广告(域名级 reject + 接口 reject-dict)
+  YoutubeAds.conf                   # YouTube 去广告(脚本引用指向同目录 youtube.response.js)
+  youtube.response.js               # 上游 Maasea/sgmodule 脚本的自持副本
   response.bundle.custom.js         # 自建脚本:BiliBili 增强(被下面的 snippet 引用)
   BiliBili.Enhanced.custom.snippet  # Quantumult X snippet:重写 + MITM 声明
+SOURCES.md                          # 自持文件的来源、本地改动与校验值
 README.md
 .github/workflows/auto_merge.yml    # 每日北京时间 06:00 自动更新
 ```
