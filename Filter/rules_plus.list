@@ -65,3 +65,11 @@ host-suffix, img-x.jd.com, reject
 host-suffix, im-x.jd.com, reject
 host-suffix, u-x.jd.com, reject
 host-suffix, dsp-x.jd.com, reject
+
+# 豆瓣 App 内嵌的三方广告 SDK 请求域(重写规则只能拦豆瓣自己的接口,SDK 直拉需域名级拦)
+# 证据:2026-09-17 抓包 A 段(重写全开) mi.gdt.qq.com/gdt_mview.fcg 仍返回 12 条真实广告,槽位 4111670407616337/7095017777787567 与豆瓣 feed_ad 下发的 gdtSDK sdk_id 一致
+host-suffix, mi.gdt.qq.com, reject
+host-suffix, v2mi.gdt.qq.com, reject
+host-suffix, api-access.pangolin-sdk-toutiao.com, reject
+host-suffix, api-access.pangolin-sdk-toutiao-b.com, reject
+host, pgdt.gtimg.cn, reject
