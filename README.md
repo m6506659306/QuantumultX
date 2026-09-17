@@ -1,4 +1,4 @@
-# QX
+# QuantumultX
 
 Quantumult X 分流规则聚合,输出 **proxy / direct** 两组规则文件,外加手动维护的 **plus** 补充规则,保持 Quantumult X 配置简洁,无需在配置里写大量规则。
 
@@ -20,8 +20,8 @@ Quantumult X 分流规则聚合,输出 **proxy / direct** 两组规则文件,外
 
 ```
 [filter_remote]
-https://raw.githubusercontent.com/m6506659306/QX/main/rules_proxy.list, tag=proxy, update-interval=86400, force-policy=proxy
-https://raw.githubusercontent.com/m6506659306/QX/main/rules_direct.list, tag=direct, update-interval=86400, force-policy=direct
+https://raw.githubusercontent.com/m6506659306/QuantumultX/main/rules_proxy.list, tag=proxy, update-interval=86400, force-policy=proxy
+https://raw.githubusercontent.com/m6506659306/QuantumultX/main/rules_direct.list, tag=direct, update-interval=86400, force-policy=direct
 ```
 
 > `force-policy` 会覆盖文件内每行的策略组名,把该文件所有规则强制导向你指定的策略组。若你的策略组名就是 `proxy` / `direct`,可省略;名称不同时请务必加上。
@@ -38,8 +38,12 @@ https://raw.githubusercontent.com/m6506659306/QX/main/rules_direct.list, tag=dir
 ## 项目结构
 
 ```
+rules_proxy.list      # 自动生成:代理规则(勿手改)
+rules_direct.list     # 自动生成:直连规则(勿手改)
+rules_plus.list       # 手动维护:补充规则(苹果推送、B站、广告拦截等)
 source_proxy.txt      # proxy 上游规则 URL 清单
 source_direct.txt     # direct 上游规则 URL 清单
-rules_plus.list       # 手动补充规则(苹果推送、B站、广告拦截等)
+response.bundle.custom.js         # 自建脚本:BiliBili 增强(被下面的 snippet 引用)
+BiliBili.Enhanced.custom.snippet  # Quantumult X snippet:重写 + MITM 声明
 .github/workflows/auto_merge.yml  # 每日北京时间 06:00 自动更新
 ```
