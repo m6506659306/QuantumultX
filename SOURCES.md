@@ -4,16 +4,21 @@
 
 ## `Rewrite/DoubanAds.conf`
 
-- 用途：豆瓣 App 去广告（2 条域名级 `reject` + 3 条接口 `reject-dict` + 1 条素材 `reject-img`）
+- 用途：豆瓣 App 去广告（2 条域名级 `reject` + 6 条接口 `reject-dict` + 1 条素材 `reject-img`）
 - 作者与出处：原作者奶思；取自 `fmz200/wool_scripts` 的 `QuantumultX/rewrite/split/partD/Douban.snippet`（上游 commit `6f218c9c`，2025-10-18；规则正文最后变更为 2025-09-14，commit `2f95d39`，即新增 `erebor.douban.com`、`ad.doubanio.com` 两条域名级 reject 的那次）
-- 抓取时间：2026-09-17 ｜ 本副本 sha256：`2a5de5f02346799474b6cebaf87ac8f380c86724e9647a21ed6fbe9cc194a3ce`（2026-09-17 优化后；优化前为 `3937560e…`）
+- 抓取时间：2026-09-17 ｜ 本副本 sha256：`f8a857747ce73417786695a9fb26ed9e11b461e750ca1e6953b876804e5e5c4a`（2026-09-17 二轮 A/B 抓包优化后；此前为 `2a5de5f0…`，再前为 `3937560e…`）
 - 处理方式：去掉上游 `#!` 元数据头，改写为 UserScript 注释头，规则正文照录
 - 本地改动：
   1. 新增接口拦截 `^https?:\/\/frodo\.douban\.com\/api\/v2\/erebor\/ url reject-dict`。抓包实测该接口返回 7 KB 广告数据且直连未被拦；上游只覆盖 `frodo.douban.com/api/v2/movie/banner`，路径不匹配。
   2. `hostname` 由上游的 `api.douban.com` 补全为实际需要的域；图片域展开为 `img1`~`img9.doubanio.com`（素材规则匹配 `img\d`，而旧声明只列 1/2/3/9，img4-8 的请求不解密、规则静默失效）。QX 仅验证过 `*.domain` 前缀通配，故不采用中缀 `*`。
   3. 删除死代码：`erebor.douban.com` 已由域名级 `reject` 整域拦截（连接层），其 `count/?ad=` 规则与 `hostname` 声明永不触发，一并移除。
-  4. 素材请求 `reject` → `reject-img`（返回 1px 图，避免破图与重试）。
+  4. 素材请求 `reject` → `reject-img`（2026-09-17 抓包实测：命中时 QX 以 404 空体应答，素材不再下载）。
   5. `frodo.douban.com/api/v2/movie/banner` 由 `reject` 改为 `reject-dict`（返回 `{}`，避免 App 拿到 404 空体后解析异常）。
+  6. 2026-09-17 二轮 A/B 抓包（同一设备，A 段重写全开 / B 段重写关闭）新增两条接口拦截：
+     - `frodo.douban.com/api/v2/movie/(<id>/)?ad` → `reject-dict`。A 段实测该接口仍返回 4.6 KB 真实广告（`ad_id` / `creative_id` / 素材走 `img\d.doubanio.com/view/dale-online/dale_ad/`），无任何既有规则命中；同一正则覆盖 `/api/v2/movie/<id>/ad` 单片广告位。
+     - `frodo.douban.com/api/v2/home_banner` → `reject-dict`。A 段实测仍返回 3.0 KB 真实横幅广告（`ad_id` 270540、`bg_img` 走 dale_ad 素材域、点击上报走 `erebor.douban.com/redirect/`）。上游那条 `movie/banner` 规则与真实端点路径不符，一直是死规则。
+  7. 保留 `movie/banner` 与 `api.douban.com/b*/common_ads` 两条 0 命中规则作兜底：二轮抓包内 0 命中，疑为老版本或 Android 端路径；不命中不产生副作用，删除反而可能在其他端漏拦。
+  8. 未纳入规则、留作观察的项：`amonsul.douban.com/check2`（`{"on":1,"num_limit":200,"time_limit":30}`，与广告栈同源可疑但语义未验证）、以及豆瓣 App 内嵌的第三方广告 SDK（优量汇 `mi.gdt.qq.com`、穿山甲 `api-access.pangolin-sdk-toutiao[-b].com`、京东联盟 `jztSDK`）——这些是跨 App 域名，A 段实测仍能拿到真实广告，归属域名级拦截，**按仓库分工应写进 `Filter/rules_plus.list`，不属于本文件**。
 - 上游 `#!date` 字段已被其 split 脚本清空（值为 `undefined`），不能当作更新时间。
 - 迁移：原在 `m6506659306/Rewrite` 的 `AdBlock/DoubanAds.conf`，已整体转入本仓。
 
