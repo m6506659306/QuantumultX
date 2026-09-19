@@ -1,7 +1,7 @@
 # ==========================================
 # 我的定制合并规则 (Filter/source_direct.txt 自动打包)
 # 策略组已统一重写为: direct
-# 更新时间: 2026-09-19 07:48:02 北京时间
+# 更新时间: 2026-09-20 07:49:50 北京时间
 # ==========================================
 
 # ------------------------------------------
@@ -1332,7 +1332,6 @@ IP6-CIDR,2400:b200::/32,direct
 # 正在合并自: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list
 # ------------------------------------------
 HOST,apps.apple.com,direct
-HOST,itunes.apple.com,direct
 HOST,a1.mzstatic.com,direct
 HOST,a2.mzstatic.com,direct
 HOST,a3.mzstatic.com,direct
@@ -1575,6 +1574,8 @@ HOST,devimages-cdn.apple.com,direct
 HOST,devstreaming-cdn.apple.com,direct
 HOST,docs-assets.developer.apple.com,direct
 HOST,gspe1-ssl.ls.apple.com,direct
+HOST,hls-svod.itunes.apple.com,direct
+HOST,itunes.apple.com,direct
 HOST,js-cdn.music.apple.com,direct
 HOST,lookup-api.apple.com,direct
 HOST,mask-api.fe.apple-dns.net,direct
@@ -1598,7 +1599,6 @@ HOST,fmfmobile.icloud.com,direct
 HOST,fmipmobile.icloud.com,direct
 HOST,statici.icloud.com,direct
 HOST,amp-api.fitness.apple.com,direct
-HOST,hls-svod.itunes.apple.com,direct
 HOST,guzzoni.apple.com,direct
 HOST,beta.apple.com,direct
 HOST,testflight.apple.com,direct
@@ -2783,6 +2783,7 @@ HOST-SUFFIX,applepaysupplies.net,direct
 HOST-SUFFIX,applepaysupplies.tv,direct
 HOST-SUFFIX,applewallet.com,direct
 HOST-SUFFIX,applewallet.tv,direct
+HOST-SUFFIX,appsto.re,direct
 HOST-SUFFIX,appstore.co.id,direct
 HOST-SUFFIX,appstore.com,direct
 HOST-SUFFIX,appstore.hk,direct
@@ -3096,7 +3097,6 @@ HOST-SUFFIX,wwwapplemusic.com,direct
 HOST-SUFFIX,applemusic.com,direct
 HOST-SUFFIX,apple-dns.net,direct
 HOST-SUFFIX,apple.news,direct
-HOST-SUFFIX,appsto.re,direct
 HOST-SUFFIX,digicert.com,direct
 HOST-SUFFIX,apple-cloudkit.com,direct
 HOST-SUFFIX,apple-icloud.cn,direct
