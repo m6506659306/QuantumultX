@@ -39,6 +39,30 @@
 - 用途：BiliBili 增强（重写 + MITM 声明），原项目 BiliUniverse/Enhanced（作者 VirgilClyne），本地为 custom 改版；snippet 内各条 `script-response-body` 指向本仓 `Rewrite/response.bundle.custom.js`。
 - 来源与改动记录见该 snippet 头部的 `#!` 字段（`#!date`、`#!version` 由上游脚本填写，不可当作本仓更新时间）。
 
+## `Rewrite/Biliverse.Enhanced.QX.analyze-fix.snippet` + `Rewrite/vendor/`
+
+- 用途：BiliBili 增强 0.6.0 的 Quantumult X 版（界面自定义 + 设置面板 + MITM 声明）；上游 `Biliverse/Enhanced` tag `v0.6.0` 的 `Biliverse.Enhanced.snippet` 自持改版。
+- 来源与抓取（2026-09-24）：
+  - snippet 正文：`https://github.com/Biliverse/Enhanced/releases/download/v0.6.0/Biliverse.Enhanced.snippet`（tag `v0.6.0`，2026-09-22）
+  - `Rewrite/vendor/Biliverse/Enhanced/response.bundle.js`（166,382 B）、`request.bundle.js`（150,960 B）：同 tag 的 release 资产
+  - `Rewrite/vendor/Biliverse/Enhanced/settings/index.mjs`（6,416 B）：面板前端外壳，即 `https://biliverse.github.io/settings/index.mjs`，部署源为 `Biliverse/Biliverse.github.io` 仓 `settings/index.mjs`（blob `e7bc727376ee`）
+  - `Rewrite/vendor/NSNanoCat/PreferencePanes/`：面板运行时，来自 `https://github.com/NSNanoCat/PreferencePanes/releases/latest/download/`，实际解析到 tag `v1.2.5`（2026-09-21）——`index.mjs`（82,529 B）、`navigation.mjs`（24,528 B）、`api.js`（56,479 B）。上游用 `latest` 动态解析，本仓钉在 v1.2.5
+- 校验值（以下副本与上游逐字节一致，未做内容改动）：
+  - `vendor/Biliverse/Enhanced/response.bundle.js`：`0c9aa8622b76670be456b1454f6bb117526d62a39e376de6cbea9c04c14a4fd4`
+  - `vendor/Biliverse/Enhanced/request.bundle.js`：`2b65f076318629e396cf39e466cc03abf61374712bdf7662c3ad93bb46af0809`
+  - `vendor/Biliverse/Enhanced/settings/index.mjs`：`2acba84d5c52271e6c61d42d676e78e005182fc5ba2279ede7917d4d246016a8`
+  - `vendor/NSNanoCat/PreferencePanes/index.mjs`：`b8b82c2fd6b9d446f9848c0145701991597211cbf661924e0d1f5998a2179ae1`
+  - `vendor/NSNanoCat/PreferencePanes/navigation.mjs`：`cc292df6846a793ec238637a989c160fa69438ab421d39911c722ab9b096a1fc`
+  - `vendor/NSNanoCat/PreferencePanes/api.js`：`2892d3dbc2544207faf73a6f46f11b6247d6f0ac994a79a6159a993eb57db13e`
+- 本地改动：
+  1. 第 23 行动作 `script-echo-response` → `script-analyze-echo-response`。QX 的 `script-echo-response` 不等请求正文，`api.js` 取不到 POST body 时按 `400 Expected a form body up to 65536 characters` 应答，面板报「加载失败 http400」；`script-analyze-echo-response` 是 QX 官方等待请求正文的动作（2026-09-24 实机验证：改动作后面板读写正常）。
+  2. 7 处脚本引用改指本仓 `Rewrite/vendor/`：`settings/index.mjs`（原 `biliverse.github.io`）×1、`PreferencePanes/{index.mjs,navigation.mjs,api.js}`（原 `NSNanoCat` release `latest`）×3、`Biliverse/Enhanced` release 资产 ×2（其中 `response.bundle.js` 被 5 条规则共用，故共替换 10 个 URL）。
+  3. `#!version` 由 `0.6.0` 改为 `0.6.0-qx`。
+- 未自持（snippet 内仍指上游）：`settings/index.html`、`settings/theme.css`、`settings/assets/*_subject.png` ×5、`PreferencePanes/index.html`、`Biliverse.Enhanced.PreferencePanes.json`。
+- 版本耦合：`settings/index.mjs` 首行即 `import { ActionMenu, ModuleFrame, ModuleStatus, Navigation } from '/settings/assets/navigation.mjs'`，外壳依赖 PreferencePanes 的 `navigation.mjs`；两者按同一迭代发布，升级必须整体替换并重算上表校验值。
+- 面板只能在 Bilibili App 的 WebView 内打开：`settings/index.mjs` 依赖 `window.biliBridge`，非 common WebView 会在 `bridge.initPromise` 处抛错（Safari 直开无效）。
+- 与 `BiliBili.Enhanced.custom.snippet` 的关系：两者匹配路径重叠（`x/resource/show/tab/v2`、`x/v2/account/mine`、`x/v2/region/index`、`x/v2/channel/region/list`），同时启用会让同一响应被两个脚本先后处理，只应保留一份。
+
 ## 维护约定
 
 - 上游脚本 / 规则更新后，改动本副本前先核对其 blob sha 与 sha256，并把新的校验值写回本文件。
