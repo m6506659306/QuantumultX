@@ -1,7 +1,7 @@
 # ==========================================
 # 我的定制合并规则 (Filter/source_direct.txt 自动打包)
 # 策略组已统一重写为: direct
-# 更新时间: 2026-09-25 08:12:09 北京时间
+# 更新时间: 2026-09-26 08:18:52 北京时间
 # ==========================================
 
 # ------------------------------------------
@@ -1332,6 +1332,7 @@ IP6-CIDR,2400:b200::/32,direct
 # 正在合并自: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list
 # ------------------------------------------
 HOST,apps.apple.com,direct
+HOST,itunes.apple.com,direct
 HOST,a1.mzstatic.com,direct
 HOST,a2.mzstatic.com,direct
 HOST,a3.mzstatic.com,direct
@@ -1563,6 +1564,7 @@ HOST,audio-ssl.itunes.apple.com,direct
 HOST,audio.itunes.apple.com,direct
 HOST,mvod.itunes.apple.com,direct
 HOST,streamingaudio.itunes.apple.com,direct
+HOST,gspe1-ssl.ls.apple.com,direct
 HOST,news-client-search.apple.com,direct
 HOST,api-glb-sea.smoot.apple.com,direct
 HOST,apple.comscoreresearch.com,direct
@@ -1573,10 +1575,8 @@ HOST,developer.apple.com,direct
 HOST,devimages-cdn.apple.com,direct
 HOST,devstreaming-cdn.apple.com,direct
 HOST,docs-assets.developer.apple.com,direct
-HOST,gspe1-ssl.ls.apple.com,direct
 HOST,hls-svod.itunes.apple.com,direct
 HOST,hls.itunes.apple.com,direct
-HOST,itunes.apple.com,direct
 HOST,js-cdn.music.apple.com,direct
 HOST,lookup-api.apple.com,direct
 HOST,mask-api.fe.apple-dns.net,direct
@@ -1592,7 +1592,6 @@ HOST,news-events.apple.com,direct
 HOST,np-edge.itunes.apple.com,direct
 HOST,play-edge.itunes.apple.com,direct
 HOST,sandbox.itunes.apple.com,direct
-HOST,testflight.apple.com,direct
 HOST,tv.applemusic.com,direct
 HOST,uts-api.itunes.apple.com,direct
 HOST,hls-amt.itunes.apple.com,direct
@@ -1602,6 +1601,7 @@ HOST,statici.icloud.com,direct
 HOST,amp-api.fitness.apple.com,direct
 HOST,guzzoni.apple.com,direct
 HOST,beta.apple.com,direct
+HOST,testflight.apple.com,direct
 HOST,www-cdn.icloud.com.akadns.net,direct
 HOST-SUFFIX,100beatscheap.com,direct
 HOST-SUFFIX,1monsterbeatsbydreus.com,direct
@@ -2730,6 +2730,7 @@ HOST-SUFFIX,aaplimg.com,direct
 HOST-SUFFIX,app-store.wang,direct
 HOST-SUFFIX,appe-store.com,direct
 HOST-SUFFIX,apple-appstore.cn,direct
+HOST-SUFFIX,apple-icloud.cn,direct
 HOST-SUFFIX,apple-itunes.cn,direct
 HOST-SUFFIX,apple-pay.com,direct
 HOST-SUFFIX,apple-pay.rs,direct
@@ -2740,6 +2741,7 @@ HOST-SUFFIX,appleappstore.net,direct
 HOST-SUFFIX,appleappstore.tv,direct
 HOST-SUFFIX,appledarwin.com,direct
 HOST-SUFFIX,appledarwin.net,direct
+HOST-SUFFIX,appleicloud.cn,direct
 HOST-SUFFIX,appleid-applemx.com,direct
 HOST-SUFFIX,appleid-applemx.us,direct
 HOST-SUFFIX,appleid-iclou.com,direct
@@ -2748,6 +2750,7 @@ HOST-SUFFIX,appleid.berlin,direct
 HOST-SUFFIX,appleid.com,direct
 HOST-SUFFIX,appleid.hamburg,direct
 HOST-SUFFIX,appleid.hk,direct
+HOST-SUFFIX,applemx-icloud.com,direct
 HOST-SUFFIX,appleone.audio,direct
 HOST-SUFFIX,appleone.blog,direct
 HOST-SUFFIX,appleone.chat,direct
@@ -2783,6 +2786,7 @@ HOST-SUFFIX,applepaysupplies.net,direct
 HOST-SUFFIX,applepaysupplies.tv,direct
 HOST-SUFFIX,applewallet.com,direct
 HOST-SUFFIX,applewallet.tv,direct
+HOST-SUFFIX,appsto.re,direct
 HOST-SUFFIX,appstore.co.id,direct
 HOST-SUFFIX,appstore.com,direct
 HOST-SUFFIX,appstore.hk,direct
@@ -2794,7 +2798,50 @@ HOST-SUFFIX,crashlytics.com,direct
 HOST-SUFFIX,darwinsource.com,direct
 HOST-SUFFIX,darwinsource.org,direct
 HOST-SUFFIX,darwinsourcecode.com,direct
+HOST-SUFFIX,icloud-apple.cn,direct
+HOST-SUFFIX,icloud-content.com,direct
+HOST-SUFFIX,icloud-isupport.com,direct
+HOST-SUFFIX,icloud-sandbox.com,direct
+HOST-SUFFIX,icloud.ch,direct
+HOST-SUFFIX,icloud.com,direct
+HOST-SUFFIX,icloud.com.cn,direct
+HOST-SUFFIX,icloud.de,direct
+HOST-SUFFIX,icloud.ee,direct
+HOST-SUFFIX,icloud.fi,direct
+HOST-SUFFIX,icloud.fr,direct
+HOST-SUFFIX,icloud.hu,direct
+HOST-SUFFIX,icloud.ie,direct
+HOST-SUFFIX,icloud.is,direct
+HOST-SUFFIX,icloud.jp,direct
+HOST-SUFFIX,icloud.lv,direct
+HOST-SUFFIX,icloud.net.cn,direct
+HOST-SUFFIX,icloud.om,direct
+HOST-SUFFIX,icloud.org,direct
+HOST-SUFFIX,icloud.pt,direct
+HOST-SUFFIX,icloud.ro,direct
+HOST-SUFFIX,icloud.se,direct
+HOST-SUFFIX,icloud.si,direct
+HOST-SUFFIX,icloud.sk,direct
+HOST-SUFFIX,icloud.vn,direct
+HOST-SUFFIX,icloudads.net,direct
+HOST-SUFFIX,icloudapple.cn,direct
+HOST-SUFFIX,icloudbox.net,direct
+HOST-SUFFIX,icloudbrowser.net,direct
+HOST-SUFFIX,icloude.com,direct
+HOST-SUFFIX,icloudhome.com,direct
+HOST-SUFFIX,icloudmail.net,direct
+HOST-SUFFIX,icloudmusic.net,direct
+HOST-SUFFIX,icloudnet.net,direct
+HOST-SUFFIX,icloudo.com,direct
+HOST-SUFFIX,icloudo.de,direct
+HOST-SUFFIX,icloudo.net,direct
+HOST-SUFFIX,icloudos.de,direct
+HOST-SUFFIX,icloudos.net,direct
+HOST-SUFFIX,icloudpay.net,direct
+HOST-SUFFIX,icloudsecure.net,direct
+HOST-SUFFIX,icloudsetup.com,direct
 HOST-SUFFIX,ids-apple.com,direct
+HOST-SUFFIX,ios-icloud.com,direct
 HOST-SUFFIX,itun.es,direct
 HOST-SUFFIX,itunbes.com,direct
 HOST-SUFFIX,ituneas.com,direct
@@ -2828,8 +2875,12 @@ HOST-SUFFIX,itunesstore.co,direct
 HOST-SUFFIX,itunesu.com,direct
 HOST-SUFFIX,itunesu.net,direct
 HOST-SUFFIX,iutunes.com,direct
+HOST-SUFFIX,me.com,direct
 HOST-SUFFIX,myappleid.com,direct
+HOST-SUFFIX,myicloud.net,direct
+HOST-SUFFIX,mylcloud.net,direct
 HOST-SUFFIX,tvappstore.net,direct
+HOST-SUFFIX,wwwicloud.com,direct
 HOST-SUFFIX,wwwitunes.com,direct
 HOST-SUFFIX,aplestore.com,direct
 HOST-SUFFIX,aplleipods.com,direct
@@ -3058,10 +3109,10 @@ HOST-SUFFIX,ukipad.com,direct
 HOST-SUFFIX,wwwipodlounge.com,direct
 HOST-SUFFIX,wwwmacbookair.com,direct
 HOST-SUFFIX,apple.comscoreresearch.com,direct
+HOST-SUFFIX,apple.news,direct
 HOST-SUFFIX,appleenews.com,direct
 HOST-SUFFIX,applemusic.berlin,direct
 HOST-SUFFIX,applemusic.co,direct
-HOST-SUFFIX,applemusic.com,direct
 HOST-SUFFIX,applemusic.com.au,direct
 HOST-SUFFIX,applemusic.hamburg,direct
 HOST-SUFFIX,applemusic.wang,direct
@@ -3094,66 +3145,15 @@ HOST-SUFFIX,iphoto.se,direct
 HOST-SUFFIX,iphoto.wang,direct
 HOST-SUFFIX,musickit.net,direct
 HOST-SUFFIX,wwwapplemusic.com,direct
+HOST-SUFFIX,applemusic.com,direct
 HOST-SUFFIX,apple-dns.net,direct
-HOST-SUFFIX,apple.news,direct
-HOST-SUFFIX,appsto.re,direct
-HOST-SUFFIX,cdn-apple.com,direct
 HOST-SUFFIX,digicert.com,direct
 HOST-SUFFIX,apple-cloudkit.com,direct
-HOST-SUFFIX,apple-icloud.cn,direct
 HOST-SUFFIX,apple-livephotoskit.com,direct
-HOST-SUFFIX,appleicloud.cn,direct
-HOST-SUFFIX,applemx-icloud.com,direct
 HOST-SUFFIX,apzones.com,direct
-HOST-SUFFIX,icloud-apple.cn,direct
-HOST-SUFFIX,icloud-content.com,direct
+HOST-SUFFIX,cdn-apple.com,direct
 HOST-SUFFIX,icloud-content.com.cn,direct
-HOST-SUFFIX,icloud-isupport.com,direct
-HOST-SUFFIX,icloud-sandbox.com,direct
-HOST-SUFFIX,icloud.ch,direct
 HOST-SUFFIX,icloud.cn,direct
-HOST-SUFFIX,icloud.com,direct
-HOST-SUFFIX,icloud.com.cn,direct
-HOST-SUFFIX,icloud.de,direct
-HOST-SUFFIX,icloud.ee,direct
-HOST-SUFFIX,icloud.fi,direct
-HOST-SUFFIX,icloud.fr,direct
-HOST-SUFFIX,icloud.hu,direct
-HOST-SUFFIX,icloud.ie,direct
-HOST-SUFFIX,icloud.is,direct
-HOST-SUFFIX,icloud.jp,direct
-HOST-SUFFIX,icloud.lv,direct
-HOST-SUFFIX,icloud.net.cn,direct
-HOST-SUFFIX,icloud.om,direct
-HOST-SUFFIX,icloud.org,direct
-HOST-SUFFIX,icloud.pt,direct
-HOST-SUFFIX,icloud.ro,direct
-HOST-SUFFIX,icloud.se,direct
-HOST-SUFFIX,icloud.si,direct
-HOST-SUFFIX,icloud.sk,direct
-HOST-SUFFIX,icloud.vn,direct
-HOST-SUFFIX,icloudads.net,direct
-HOST-SUFFIX,icloudapple.cn,direct
-HOST-SUFFIX,icloudbox.net,direct
-HOST-SUFFIX,icloudbrowser.net,direct
-HOST-SUFFIX,icloude.com,direct
-HOST-SUFFIX,icloudhome.com,direct
-HOST-SUFFIX,icloudmail.net,direct
-HOST-SUFFIX,icloudmusic.net,direct
-HOST-SUFFIX,icloudnet.net,direct
-HOST-SUFFIX,icloudo.com,direct
-HOST-SUFFIX,icloudo.de,direct
-HOST-SUFFIX,icloudo.net,direct
-HOST-SUFFIX,icloudos.de,direct
-HOST-SUFFIX,icloudos.net,direct
-HOST-SUFFIX,icloudpay.net,direct
-HOST-SUFFIX,icloudsecure.net,direct
-HOST-SUFFIX,icloudsetup.com,direct
-HOST-SUFFIX,ios-icloud.com,direct
-HOST-SUFFIX,me.com,direct
-HOST-SUFFIX,myicloud.net,direct
-HOST-SUFFIX,mylcloud.net,direct
-HOST-SUFFIX,wwwicloud.com,direct
 HOST-WILDCARD,*-content.icloud.com.cn,direct
 HOST-WILDCARD,apple.*,direct
 HOST-WILDCARD,apple.com.*,direct
