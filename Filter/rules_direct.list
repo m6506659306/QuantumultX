@@ -1,7 +1,7 @@
 # ==========================================
 # 我的定制合并规则 (Filter/source_direct.txt 自动打包)
 # 策略组已统一重写为: direct
-# 更新时间: 2026-09-27 08:05:56 北京时间
+# 更新时间: 2026-09-28 08:14:25 北京时间
 # ==========================================
 
 # ------------------------------------------
@@ -1576,7 +1576,6 @@ HOST,devimages-cdn.apple.com,direct
 HOST,devstreaming-cdn.apple.com,direct
 HOST,docs-assets.developer.apple.com,direct
 HOST,hls-svod.itunes.apple.com,direct
-HOST,hls.itunes.apple.com,direct
 HOST,js-cdn.music.apple.com,direct
 HOST,lookup-api.apple.com,direct
 HOST,mask-api.fe.apple-dns.net,direct
@@ -1589,19 +1588,20 @@ HOST,news-assets.apple.com,direct
 HOST,news-client.apple.com,direct
 HOST,news-edge.apple.com,direct
 HOST,news-events.apple.com,direct
+HOST,sandbox.itunes.apple.com,direct
+HOST,testflight.apple.com,direct
+HOST,hls-amt.itunes.apple.com,direct
+HOST,hls.itunes.apple.com,direct
 HOST,np-edge.itunes.apple.com,direct
 HOST,play-edge.itunes.apple.com,direct
-HOST,sandbox.itunes.apple.com,direct
 HOST,tv.applemusic.com,direct
 HOST,uts-api.itunes.apple.com,direct
-HOST,hls-amt.itunes.apple.com,direct
 HOST,fmfmobile.icloud.com,direct
 HOST,fmipmobile.icloud.com,direct
 HOST,statici.icloud.com,direct
 HOST,amp-api.fitness.apple.com,direct
 HOST,guzzoni.apple.com,direct
 HOST,beta.apple.com,direct
-HOST,testflight.apple.com,direct
 HOST,www-cdn.icloud.com.akadns.net,direct
 HOST-SUFFIX,100beatscheap.com,direct
 HOST-SUFFIX,1monsterbeatsbydreus.com,direct
@@ -3109,7 +3109,6 @@ HOST-SUFFIX,ukipad.com,direct
 HOST-SUFFIX,wwwipodlounge.com,direct
 HOST-SUFFIX,wwwmacbookair.com,direct
 HOST-SUFFIX,apple.comscoreresearch.com,direct
-HOST-SUFFIX,apple.news,direct
 HOST-SUFFIX,appleenews.com,direct
 HOST-SUFFIX,applemusic.berlin,direct
 HOST-SUFFIX,applemusic.co,direct
@@ -3147,6 +3146,7 @@ HOST-SUFFIX,musickit.net,direct
 HOST-SUFFIX,wwwapplemusic.com,direct
 HOST-SUFFIX,applemusic.com,direct
 HOST-SUFFIX,apple-dns.net,direct
+HOST-SUFFIX,apple.news,direct
 HOST-SUFFIX,digicert.com,direct
 HOST-SUFFIX,apple-cloudkit.com,direct
 HOST-SUFFIX,apple-livephotoskit.com,direct
@@ -3195,9 +3195,9 @@ USER-AGENT,locationd*,direct
 USER-AGENT,passd*,direct
 USER-AGENT,Music*,direct
 USER-AGENT,AppleNews*,direct
-USER-AGENT,AppleTV*,direct
 USER-AGENT,com.apple.news*,direct
 USER-AGENT,com.apple.trustd*,direct
+USER-AGENT,AppleTV*,direct
 USER-AGENT,com.apple.tv*,direct
 IP-CIDR,139.178.128.0/18,direct
 IP-CIDR,144.178.0.0/19,direct
