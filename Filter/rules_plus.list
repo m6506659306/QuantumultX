@@ -70,3 +70,5 @@ host-suffix, v2mi.gdt.qq.com, reject
 host-suffix, api-access.pangolin-sdk-toutiao.com, reject
 host-suffix, api-access.pangolin-sdk-toutiao-b.com, reject
 host, pgdt.gtimg.cn, reject
+# notion
+host-suffix, notion-static.com, proxy
